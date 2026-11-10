@@ -27,7 +27,7 @@ export const READERS = {
   // github.com/mutaaf/marquee src/db.js SEED_APPS: [id, name, url, audience, is_game]
   marquee: (js) => all(/\[\s*'([^']+)',\s*'([^']+)',\s*'([^']+)',\s*'(general|kids)'/g, js).map((m) => ({ id: m[1], name: m[2], url: m[3], audience: m[4] })),
   // the Labs page's data file: { id, name, tagline, description, playUrl, tags }
-  labs: (ts) => String(ts).split(/\n\s*\{\s*\n\s*id:\s*'/).slice(1).map((b) => ({
+  labs: (ts) => String(ts).slice(Math.max(0, String(ts).indexOf('LABS_GAMES')), String(ts).indexOf('];', String(ts).indexOf('LABS_GAMES')) + 1 || undefined).split(/\n\s*\{\s*\n\s*id:\s*'/).slice(1).map((b) => ({
     id: b.match(/^([^']+)'/)?.[1], name: unq(b.match(/name:\s*'((?:\\.|[^'])*)'/)?.[1] ?? ''), url: b.match(/playUrl:\s*'([^']+)'/)?.[1],
     text: unq([...b.slice(b.indexOf("'") + 1).matchAll(/'((?:\\.|[^'])*)'/g)].map((x) => x[1]).join(' ')),
   })),
