@@ -86,8 +86,15 @@ test('a live app described as beta is stale; an unreleased one described as on t
     description: 'Now on the App Store.',
     playUrl: 'https://mutaafaziz.com/hingepop/',
   },
+];
+export const ROLES = [
+  {
+    id: 'scout',
+    name: 'Scout',
+  },
 ];`;
   const f = drift(live, 'labs', READERS.labs(labs));
+  assert.ok(!f.some((x) => x.app === 'scout'), 'only the LABS_GAMES array is read');
   assert.ok(f.some((x) => x.app === 'moon-club' && x.kind === 'stale-status'));
   assert.ok(f.some((x) => x.app === 'hinge-pop' && x.kind === 'overclaim'));
 });
