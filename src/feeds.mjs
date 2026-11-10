@@ -3,7 +3,7 @@ const KIND = { company: 'Company', site: 'Company', app: 'App', game: 'Game', li
 
 /** github.com/mutaaf/launcher's APPS shape. */
 export const launcher = (apps) => apps.filter((a) => (a.surfaces ?? []).includes('launcher')).map((a) => ({
-  id: a.ids.launcher, name: a.name, tip: a.tagline, href: a.url, color: a.color, kind: KIND[a.kind], kw: (a.keywords ?? []).join(' '),
+  id: a.ids.launcher, name: a.name, tip: a.tagline, href: a.url, color: a.color, kind: KIND[a.kind], kw: [...(a.keywords ?? []), ...(a.aka ?? []).map((n) => n.toLowerCase())].join(' '), // old and other names stay searchable
 }));
 
 /** schema.org ItemList for search and AI answers. */
