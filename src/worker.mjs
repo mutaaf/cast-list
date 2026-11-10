@@ -7,7 +7,8 @@ import { launcher, jsonld } from './feeds.mjs';
 import { page } from './page.mjs';
 
 const VERSION = (() => { let h = 2166136261; for (const c of JSON.stringify(catalog)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36); })();
-const headers = (type, extra = {}) => ({ 'content-type': type, 'cache-control': 'public, max-age=300', 'access-control-allow-origin': '*', etag: `"${VERSION}"`, ...extra });
+// No ETag: a feed can change with the code while the catalog doesn't, and five minutes of cache is enough.
+const headers = (type, extra = {}) => ({ 'content-type': type, 'cache-control': 'public, max-age=300', 'access-control-allow-origin': '*', ...extra });
 const json = (b, s = 200, h = {}) => new Response(JSON.stringify(b, null, 1), { status: s, headers: headers('application/json; charset=utf-8', h) });
 const sha256 = async (s) => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)))].map((b) => b.toString(16).padStart(2, '0')).join('');
 
@@ -18,7 +19,6 @@ export default class CastList extends WorkerEntrypoint {
 
   async fetch(req) {
     const url = new URL(req.url), path = url.pathname.replace(/\/+$/, '') || '/';
-    if (req.method === 'GET' && req.headers.get('if-none-match') === `"${VERSION}"` && path.startsWith('/cast/api/launcher')) return new Response(null, { status: 304, headers: headers('application/json') });
     if (path === '/cast/api/apps') return json(await this.apps());
     if (path.startsWith('/cast/api/apps/')) { const a = await this.app(path.slice(15)); return a ? json(a) : json({ error: 'no such app' }, 404); }
     if (path === '/cast/api/launcher') return json({ version: VERSION, apps: launcher(publicApps(catalog)) });
