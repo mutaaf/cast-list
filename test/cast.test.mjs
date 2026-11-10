@@ -21,6 +21,14 @@ test('the rules catch the mistakes that already happened once', () => {
   assert.match(bad({ surfaces: [...moon.surfaces, 'marquee'], ids: { ...moon.ids, marquee: 'mpk' } }), /never be on Marquee/);
   assert.match(bad({ audience: 'children' }), /audience/);
   assert.match(bad({ ids: { ...moon.ids, playbill: 'x' } }), /isn't listed on it/);
+  // Nov 10: three live apps sat off Playbill for weeks because nothing said they had to be on it.
+  const hp = catalog.apps.find((a) => a.slug === 'hinge-pop');
+  const off = { ...hp, surfaces: hp.surfaces.filter((s) => s !== 'playbill'), ids: { ...hp.ids, playbill: undefined } };
+  delete off.ids.playbill;
+  assert.match(check({ apps: [off] }).join(), /not on Playbill/);
+  assert.deepEqual(check({ apps: [{ ...off, notOn: { playbill: 'A page that should not be ranked, for a stated reason.' } }] }), []);
+  assert.match(check({ apps: [{ ...off, notOn: { playbill: 'no' } }] }).join(), /needs a reason/);
+  assert.match(check({ apps: [{ ...hp, worker: undefined }] }).join(), /needs worker/);
   assert.match(check({ apps: [catalog.apps[0], { ...catalog.apps[1], ids: { launcher: catalog.apps[0].ids.launcher } }] }).join(), /used twice/);
 });
 

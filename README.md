@@ -29,6 +29,7 @@ Audit job (every 6 h, and on catalog change) ──reads 10 surfaces──▶ dr
 - Every app has an audience, `general` or `kids`. It decides ads, analytics and links downstream.
 - A kids app on the App Store has a grown-up gate, and its download never links the store directly.
 - `ads: false` means it can never be listed on Marquee.
+- Every live public page on mutaafaziz.com names its `worker` and is on Playbill, or says why not in `notOn.playbill`. Playbill generates its routes and service bindings from this, so adding an app here is how it gets search copy.
 - Each surface's id for an app is unique, and an app has an id only on surfaces it's listed on.
 - Private entries never leave the Worker.
 
