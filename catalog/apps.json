@@ -58,6 +58,7 @@
       "status": "live",
       "audience": "general",
       "url": "https://mutaafaziz.com/",
+      "worker": "mutaafaziz-site",
       "repo": "mutaafaziz-site",
       "tagline": "The founder: work, writing, and every edition since 1996.",
       "color": "#F3F1EC",
@@ -92,6 +93,7 @@
       "status": "live",
       "audience": "kids",
       "url": "https://mutaafaziz.com/openaero/",
+      "worker": "openaero-dfw",
       "repo": "openaero-dfw",
       "tagline": "Fly a 737 over real satellite imagery of DFW, in today's weather.",
       "color": "#1E6FD9",
@@ -127,6 +129,7 @@
       "status": "live",
       "audience": "kids",
       "url": "https://mutaafaziz.com/outatime/",
+      "worker": "outatime-88",
       "repo": "outatime-88",
       "tagline": "Neon time-travel racer. Hit 88 mph to jump eras.",
       "color": "#150726",
@@ -166,6 +169,7 @@
       "status": "live",
       "audience": "general",
       "url": "https://mutaafaziz.com/coldgas/",
+      "worker": "cold-gas",
       "repo": "cold-gas",
       "tagline": "Jump a roadster over parked EVs on ten cold-gas thrusters.",
       "color": "#0B0B0C",
@@ -213,6 +217,7 @@
       "status": "live",
       "audience": "general",
       "url": "https://mutaafaziz.com/hearth/",
+      "worker": "hearth",
       "repo": "hearth",
       "tagline": "One remote for every TV in the house.",
       "color": "#F2541B",
@@ -260,6 +265,7 @@
       "status": "live",
       "audience": "general",
       "url": "https://mutaafaziz.com/adhan/",
+      "worker": "mutaafaziz-site",
       "tagline": "The call to prayer on every screen and speaker in the house.",
       "color": "#14204F",
       "added": "2026-11-02",
@@ -268,7 +274,8 @@
       ],
       "ids": {
         "launcher": "adhan",
-        "dock": "adhan"
+        "dock": "adhan",
+        "playbill": "adhan"
       },
       "surfaces": [
         "launcher",
@@ -286,6 +293,7 @@
       "status": "live",
       "audience": "general",
       "url": "https://mutaafaziz.com/chalktalk/",
+      "worker": "chalk-talk",
       "repo": "chalk-talk",
       "tagline": "Say or sketch a play; the X's and O's draw themselves.",
       "color": "#04070C",
@@ -321,6 +329,7 @@
       "status": "live",
       "audience": "kids",
       "url": "https://mutaafaziz.com/kin/",
+      "worker": "kin",
       "repo": "kin",
       "tagline": "A tiny creature that hops between screens.",
       "color": "#0B0D12",
@@ -362,6 +371,7 @@
       "status": "live",
       "audience": "general",
       "url": "https://mutaafaziz.com/hingepop/",
+      "worker": "hinge-pop",
       "repo": "hinge-pop",
       "tagline": "Split bubbles and keep them off the hinge. Solo or two players on one screen.",
       "color": "#0D1117",
@@ -403,6 +413,7 @@
       "status": "live",
       "audience": "general",
       "url": "https://mutaafaziz.com/metaphases/",
+      "worker": "metaphases",
       "repo": "metaphases",
       "tagline": "Every earnings report, phase by phase.",
       "color": "#2346D8",
@@ -441,6 +452,7 @@
       "status": "live",
       "audience": "kids",
       "url": "https://mutaafaziz.com/metaphases/kids/",
+      "worker": "metaphases",
       "repo": "moon-club",
       "tagline": "The Market Moon Club: money and charts for kids, with Luna.",
       "color": "#F29A2E",
@@ -477,7 +489,10 @@
         "labs",
         "lobby"
       ],
-      "ads": false
+      "ads": false,
+      "notOn": {
+        "playbill": "Its web page is the grown-up gate in front of the App Store download, so it is not decorated or pushed to search."
+      }
     },
     {
       "slug": "library",
@@ -492,6 +507,7 @@
       "status": "live",
       "audience": "general",
       "url": "https://mutaafaziz.com/library/",
+      "worker": "library",
       "repo": "library",
       "tagline": "Books that shape how I think. Lessons that shape how I lead.",
       "color": "#B48A48",

@@ -7,6 +7,9 @@ export const PLATFORMS = ['web', 'ios', 'ipad', 'android', 'tv', 'visionos'];
 export const SURFACES = ['launcher', 'dock', 'llms', 'resume', 'manifest', 'apps-page', 'playbill', 'marquee', 'labs', 'lobby'];
 export const ID_SURFACES = ['launcher', 'dock', 'playbill', 'marquee', 'labs'];
 
+// The host Playbill fronts. A live public page here gets search and AI-answer copy unless notOn.playbill says why not.
+export const PLAYBILL_HOST = 'mutaafaziz.com';
+const WORKER = /^[a-z0-9][a-z0-9-]{0,62}$/;
 const SLUG = /^[a-z0-9][a-z0-9-]{0,40}$/, DATE = /^\d{4}-\d{2}-\d{2}$/, COLOR = /^#[0-9A-Fa-f]{6}$/;
 
 export function check(catalog) {
@@ -38,6 +41,20 @@ export function check(catalog) {
     // The kids rule: a kids app with a store listing must route its download through a grown-up gate,
     // unless it's a web-first game whose native build isn't on the store.
     if (a.audience === 'kids' && a.store?.appStoreId && !a.store.gate) bad(a, 'a kids app on the App Store needs store.gate (a grown-up gate URL)');
+    for (const [s, why] of Object.entries(a.notOn ?? {})) {
+      if (!SURFACES.includes(s)) bad(a, `notOn.${s} is not a surface`);
+      if (typeof why !== 'string' || why.length < 20) bad(a, `notOn.${s} needs a reason (a sentence)`);
+      if ((a.surfaces ?? []).includes(s)) bad(a, `is listed on ${s} and also notOn.${s}`);
+    }
+    if (a.worker !== undefined && !WORKER.test(a.worker)) bad(a, 'worker must be a Cloudflare Worker name');
+    // Playbill can only front a page it has a service binding for, and every live public page on the site
+    // gets one: a missing app is a failed check here, not a finding in the next audit.
+    let host = null; try { host = new URL(a.url).hostname; } catch {}
+    if (host === PLAYBILL_HOST && a.status === 'live' && (a.visibility ?? 'public') === 'public') {
+      if (!a.worker) bad(a, `lives on ${PLAYBILL_HOST}, so it needs worker (the Worker that serves ${new URL(a.url).pathname})`);
+      if (!(a.surfaces ?? []).includes('playbill') && !a.notOn?.playbill) bad(a, 'is a live page on the site but not on Playbill; add it (ids.playbill) or say why in notOn.playbill');
+    }
+    if ((a.surfaces ?? []).includes('playbill') && !a.ids?.playbill) bad(a, 'is on Playbill but has no ids.playbill');
     if (a.ads === false && (a.surfaces ?? []).includes('marquee')) bad(a, 'ads: false, so it can never be on Marquee');
   }
   return errors;
