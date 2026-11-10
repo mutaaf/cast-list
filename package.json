@@ -1,0 +1,12 @@
+{
+  "name": "cast-list",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\"",
+    "check": "npm test && npx --yes wrangler@4 deploy --dry-run --outdir /tmp/cast-dry >/dev/null && echo bundle-ok",
+    "drift": "node scripts/drift.mjs",
+    "deploy": "npm test && npx --yes wrangler@4 deploy && curl -sf https://mutaafaziz.com/cast/api/health"
+  }
+}

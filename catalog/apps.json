@@ -1,0 +1,662 @@
+{
+  "$comment": "The one list of the portfolio's apps. Edit here, nowhere else: every launcher, page, feed and service reads this or is audited against it. Store status is NOT typed here; it comes live from App Store Connect through Stage Manager. Schema: src/schema.mjs.",
+  "apps": [
+    {
+      "slug": "digital-craft",
+      "name": "Digital Craft AI",
+      "kind": "company",
+      "status": "live",
+      "audience": "general",
+      "url": "https://digitalcraftai.com/",
+      "tagline": "AI systems for traditional industries, on retainer.",
+      "color": "#0A1016",
+      "added": "2026-10-20",
+      "keywords": [
+        "digital craft ai company construction contractors real estate events lead response estimates voice agents demos"
+      ],
+      "ids": {
+        "launcher": "dc",
+        "dock": "dc"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms"
+      ]
+    },
+    {
+      "slug": "fractional-cto",
+      "name": "Fractional CTO",
+      "kind": "company",
+      "status": "live",
+      "audience": "general",
+      "url": "https://cto.digitalcraftai.com/",
+      "tagline": "Strategic technology leadership on retainer, from Digital Craft AI.",
+      "color": "#0B0B0C",
+      "added": "2026-10-20",
+      "keywords": [
+        "cto fractional chief technology officer retainer engineering leadership roadmap architecture"
+      ],
+      "ids": {
+        "launcher": "cto",
+        "dock": "cto"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms"
+      ]
+    },
+    {
+      "slug": "mutaafaziz",
+      "name": "Mutaaf Aziz",
+      "aka": [
+        "mutaafaziz.com",
+        "This site"
+      ],
+      "kind": "site",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/",
+      "repo": "mutaafaziz-site",
+      "tagline": "The founder: work, writing, and every edition since 1996.",
+      "color": "#F3F1EC",
+      "added": "2026-10-17",
+      "keywords": [
+        "mutaaf aziz founder resume portfolio mission control about"
+      ],
+      "ids": {
+        "launcher": "mz",
+        "playbill": "site",
+        "marquee": "site"
+      },
+      "surfaces": [
+        "launcher",
+        "llms",
+        "resume",
+        "manifest",
+        "playbill",
+        "marquee"
+      ],
+      "urls": [
+        "https://mutaafaziz.com/AGENTS.md"
+      ]
+    },
+    {
+      "slug": "openaero",
+      "name": "OpenAero DFW",
+      "aka": [
+        "OpenAero"
+      ],
+      "kind": "game",
+      "status": "live",
+      "audience": "kids",
+      "url": "https://mutaafaziz.com/openaero/",
+      "repo": "openaero-dfw",
+      "tagline": "Fly a 737 over real satellite imagery of DFW, in today's weather.",
+      "color": "#1E6FD9",
+      "added": "2026-10-17",
+      "platforms": [
+        "web"
+      ],
+      "keywords": [
+        "flight simulator plane fly 737 cessna dfw dallas fort worth love field weather satellite"
+      ],
+      "ids": {
+        "launcher": "oa",
+        "dock": "oa",
+        "playbill": "openaero",
+        "marquee": "openaero",
+        "labs": "openaero-dfw"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "playbill",
+        "marquee",
+        "labs"
+      ]
+    },
+    {
+      "slug": "outatime",
+      "name": "OUTATIME 88",
+      "kind": "game",
+      "status": "live",
+      "audience": "kids",
+      "url": "https://mutaafaziz.com/outatime/",
+      "repo": "outatime-88",
+      "tagline": "Neon time-travel racer. Hit 88 mph to jump eras.",
+      "color": "#150726",
+      "added": "2026-10-17",
+      "platforms": [
+        "web"
+      ],
+      "keywords": [
+        "racer racing car neon 88 mph time travel arcade drift boost"
+      ],
+      "ids": {
+        "launcher": "ot",
+        "dock": "ot",
+        "playbill": "outatime",
+        "marquee": "outatime",
+        "labs": "outatime-88"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "playbill",
+        "marquee",
+        "labs"
+      ]
+    },
+    {
+      "slug": "cold-gas",
+      "name": "COLD GAS",
+      "aka": [
+        "Cold Gas",
+        "Cold Gas for iPhone"
+      ],
+      "kind": "game",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/coldgas/",
+      "repo": "cold-gas",
+      "tagline": "Jump a roadster over parked EVs on ten cold-gas thrusters.",
+      "color": "#0B0B0C",
+      "added": "2026-10-19",
+      "platforms": [
+        "web",
+        "ios",
+        "ipad"
+      ],
+      "store": {
+        "bundle": "com.mutaafaziz.coldgas",
+        "appStoreId": "6830960344"
+      },
+      "keywords": [
+        "cold gas stunt jump roadster electric ev car thrusters ramp barrel roll 360 landing judges 3d"
+      ],
+      "ids": {
+        "launcher": "cg",
+        "dock": "cg",
+        "playbill": "coldgas",
+        "marquee": "coldgas",
+        "labs": "cold-gas"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "apps-page",
+        "playbill",
+        "marquee",
+        "labs",
+        "lobby"
+      ]
+    },
+    {
+      "slug": "hearth",
+      "name": "Hearth",
+      "aka": [
+        "Hearth: Universal TV Remote",
+        "Hearth (demo)"
+      ],
+      "kind": "app",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/hearth/",
+      "repo": "hearth",
+      "tagline": "One remote for every TV in the house.",
+      "color": "#F2541B",
+      "added": "2026-10-21",
+      "platforms": [
+        "web",
+        "ios",
+        "android"
+      ],
+      "store": {
+        "bundle": "com.mutaaf.hearth",
+        "appStoreId": "6825961819",
+        "lobbyRepo": "hearth-app"
+      },
+      "keywords": [
+        "hearth tv remote television lg samsung webos tizen smart tv control home wifi living room universal remote"
+      ],
+      "ids": {
+        "launcher": "hh",
+        "dock": "hh",
+        "playbill": "hearth",
+        "marquee": "hearth",
+        "labs": "hearth"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "apps-page",
+        "playbill",
+        "marquee",
+        "labs",
+        "lobby"
+      ],
+      "urls": [
+        "https://mutaafaziz.com/hearth/demo/"
+      ]
+    },
+    {
+      "slug": "adhan",
+      "name": "Adhan Clock",
+      "kind": "app",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/adhan/",
+      "tagline": "The call to prayer on every screen and speaker in the house.",
+      "color": "#14204F",
+      "added": "2026-11-02",
+      "keywords": [
+        "adhan clock azan azaan athan call to prayer salah salat namaz prayer times fajr dhuhr asr maghrib isha alexa echo nest android tv muslim islam"
+      ],
+      "ids": {
+        "launcher": "adhan",
+        "dock": "adhan"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "playbill"
+      ]
+    },
+    {
+      "slug": "chalk-talk",
+      "name": "Chalk Talk",
+      "kind": "app",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/chalktalk/",
+      "repo": "chalk-talk",
+      "tagline": "Say or sketch a play; the X's and O's draw themselves.",
+      "color": "#04070C",
+      "added": "2026-10-30",
+      "platforms": [
+        "web"
+      ],
+      "keywords": [
+        "chalk talk whiteboard playbook plays x and o xs and os basketball flag football coach coaching youth sketch draw voice route tree coverage"
+      ],
+      "ids": {
+        "launcher": "ct",
+        "dock": "ct",
+        "playbill": "chalktalk",
+        "marquee": "chalktalk",
+        "labs": "chalk-talk"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "playbill",
+        "marquee",
+        "labs"
+      ]
+    },
+    {
+      "slug": "kin",
+      "name": "KIN",
+      "kind": "game",
+      "status": "live",
+      "audience": "kids",
+      "url": "https://mutaafaziz.com/kin/",
+      "repo": "kin",
+      "tagline": "A tiny creature that hops between screens.",
+      "color": "#0B0D12",
+      "added": "2026-10-22",
+      "platforms": [
+        "web",
+        "ios",
+        "ipad"
+      ],
+      "store": {
+        "bundle": "com.mutaafaziz.kin"
+      },
+      "keywords": [
+        "kin creature pet virtual pet tamagotchi companion hatch cocoon weather sky snow rain two screens hop share friend iphone ipad toy"
+      ],
+      "ids": {
+        "launcher": "kin",
+        "dock": "kin",
+        "playbill": "kin",
+        "marquee": "kin",
+        "labs": "kin"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "playbill",
+        "marquee",
+        "labs",
+        "lobby"
+      ]
+    },
+    {
+      "slug": "hinge-pop",
+      "name": "Hinge Pop",
+      "kind": "game",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/hingepop/",
+      "repo": "hinge-pop",
+      "tagline": "Split bubbles and keep them off the hinge. Solo or two players on one screen.",
+      "color": "#0D1117",
+      "added": "2026-11-04",
+      "platforms": [
+        "web",
+        "ios",
+        "ipad"
+      ],
+      "store": {
+        "bundle": "com.mutaafaziz.hingepop",
+        "appStoreId": "6830968334"
+      },
+      "keywords": [
+        "hinge pop bubble bubbles split pop arcade foldable fold levels two player 2 player versus one finger tap flick"
+      ],
+      "ids": {
+        "launcher": "hp",
+        "dock": "hp",
+        "playbill": "hingepop",
+        "labs": "hinge-pop"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "apps-page",
+        "playbill",
+        "labs",
+        "lobby"
+      ]
+    },
+    {
+      "slug": "metaphases",
+      "name": "Metaphases",
+      "kind": "app",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/metaphases/",
+      "repo": "metaphases",
+      "tagline": "Every earnings report, phase by phase.",
+      "color": "#2346D8",
+      "added": "2026-10-31",
+      "platforms": [
+        "web"
+      ],
+      "keywords": [
+        "metaphases earnings calendar earnings season reports stocks ticker moon phases before open after close beat miss consensus market mood fear greed etf look through compass retrace watchlist setup quality grades"
+      ],
+      "ids": {
+        "launcher": "mp",
+        "dock": "mp",
+        "playbill": "metaphases",
+        "labs": "metaphases"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "playbill",
+        "labs"
+      ]
+    },
+    {
+      "slug": "moon-club",
+      "name": "Moon Club",
+      "aka": [
+        "Metaphases Kids",
+        "Market Moon Club",
+        "Moon Club for iPhone & iPad"
+      ],
+      "kind": "app",
+      "status": "live",
+      "audience": "kids",
+      "url": "https://mutaafaziz.com/metaphases/kids/",
+      "repo": "moon-club",
+      "tagline": "The Market Moon Club: money and charts for kids, with Luna.",
+      "color": "#F29A2E",
+      "added": "2026-11-03",
+      "platforms": [
+        "web",
+        "ios",
+        "ipad"
+      ],
+      "store": {
+        "bundle": "com.mutaafaziz.moonclub",
+        "appStoreId": "6829860949",
+        "gate": "https://mutaafaziz.com/metaphases/kids/app"
+      },
+      "rules": [
+        "Never link the App Store or TestFlight directly: the download goes through the grown-up gate.",
+        "No ads, no analytics, no sign-up."
+      ],
+      "keywords": [
+        "metaphases kids moon club market moon club luna money kids children family piggy bank saving allowance candles candlesticks charts stocks learn finance iphone ipad"
+      ],
+      "ids": {
+        "launcher": "mpk",
+        "dock": "mpk",
+        "labs": "metaphases-kids"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "apps-page",
+        "labs",
+        "lobby"
+      ],
+      "ads": false
+    },
+    {
+      "slug": "library",
+      "name": "The Leadership Library",
+      "aka": [
+        "Leadership Library",
+        "The Library",
+        "Library",
+        "LIBRARY.EXE"
+      ],
+      "kind": "library",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/library/",
+      "repo": "library",
+      "tagline": "Books that shape how I think. Lessons that shape how I lead.",
+      "color": "#B48A48",
+      "added": "2026-10-22",
+      "keywords": [
+        "library leadership library books reading bookshelf engineering management manager peopleware radical candor drive elegant puzzle managers path xp lencioni"
+      ],
+      "ids": {
+        "launcher": "lib",
+        "dock": "lib",
+        "playbill": "library",
+        "marquee": "library"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume",
+        "manifest",
+        "playbill",
+        "marquee"
+      ]
+    },
+    {
+      "slug": "17-0",
+      "name": "17-0",
+      "aka": [
+        "18-0",
+        "17-0: Perfect Season Builder"
+      ],
+      "kind": "game",
+      "status": "live",
+      "audience": "general",
+      "url": "https://18-0.co/",
+      "repo": "18-0",
+      "tagline": "Spin a franchise and an era, fill seven slots, chase a perfect season.",
+      "color": "#0E5A2E",
+      "added": "2026-10-17",
+      "platforms": [
+        "web",
+        "ios",
+        "android"
+      ],
+      "store": {
+        "bundle": "com.eighteenzerodcai.app",
+        "appStoreId": "6808414695"
+      },
+      "notes": "Renamed from 18-0 for a 17-game season; the repo and domain keep the old name.",
+      "keywords": [
+        "seventeen eighteen football nfl history draft perfect season"
+      ],
+      "ids": {
+        "launcher": "180",
+        "dock": "180",
+        "playbill": "18-0",
+        "marquee": "18-0"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "manifest",
+        "apps-page",
+        "playbill",
+        "marquee",
+        "lobby"
+      ]
+    },
+    {
+      "slug": "fantasy-edge",
+      "name": "fantasy-edge",
+      "aka": [
+        "Fantasy Edge"
+      ],
+      "kind": "app",
+      "status": "paused",
+      "audience": "general",
+      "url": "https://mutaaf.github.io/fantasy-edge/",
+      "repo": "fantasy-edge",
+      "tagline": "Every fantasy league on one board, sized by leverage.",
+      "color": "#0F172A",
+      "added": "2026-10-17",
+      "keywords": [
+        "fantasy football leagues leverage vision pro tv"
+      ],
+      "ids": {
+        "launcher": "fe",
+        "dock": "fe"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms"
+      ]
+    },
+    {
+      "slug": "family-xp",
+      "name": "Family XP",
+      "kind": "app",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaaf.github.io/family-xp/",
+      "tagline": "A Windows-XP-style family OS that runs on your own Mac.",
+      "color": "#2F6FD0",
+      "added": "2026-10-17",
+      "keywords": [
+        "family os windows xp chores kids arcade mac"
+      ],
+      "ids": {
+        "launcher": "fxp",
+        "dock": "fxp"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms"
+      ]
+    },
+    {
+      "slug": "sportsiq",
+      "name": "SportsIQ",
+      "kind": "app",
+      "status": "live",
+      "audience": "general",
+      "url": "https://youthsportsiq.com/",
+      "tagline": "Voice-first coaching intelligence for youth sports.",
+      "color": "#F26B1D",
+      "added": "2026-10-17",
+      "keywords": [
+        "sportsiq coaching youth sports basketball voice practice"
+      ],
+      "ids": {
+        "launcher": "siq",
+        "dock": "siq"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms"
+      ]
+    },
+    {
+      "slug": "aurora-field",
+      "name": "aurora-field",
+      "kind": "library",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaaf.github.io/aurora-field/",
+      "repo": "aurora-field",
+      "tagline": "The open-source particle library behind the skies and the hero stories.",
+      "color": "#0B1416",
+      "added": "2026-10-18",
+      "keywords": [
+        "aurora-field particles webgl sky helm ranger open source library web component storyboard"
+      ],
+      "ids": {
+        "launcher": "af",
+        "dock": "af"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "resume"
+      ]
+    }
+  ]
+}

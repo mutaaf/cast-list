@@ -1,0 +1,16 @@
+// Cast List: the one app catalog. See README.md. Secret: DRIFT_TOKEN_HASH (sha256 of the audit job's token).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cast-list",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-10-01",
+  "routes": [{ "pattern": "mutaafaziz.com/cast", "zone_name": "mutaafaziz.com" }, { "pattern": "mutaafaziz.com/cast/*", "zone_name": "mutaafaziz.com" }],
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": { "enabled": true },
+  "kv_namespaces": [{ "binding": "KV", "id": "aa1068463f234f52a08396113f179df4" }],
+  "services": [
+    { "binding": "STAGE", "service": "stage-manager" },
+    { "binding": "CUE", "service": "cue", "props": { "source": "cast-list" } }
+  ]
+}
