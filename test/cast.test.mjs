@@ -41,6 +41,7 @@ test('the launcher feed has exactly the launcher\'s shape and every launcher app
   const l = launcher(apps);
   assert.deepEqual(Object.keys(l[0]), ['id', 'name', 'tip', 'href', 'color', 'kind', 'kw']);
   assert.ok(l.some((x) => x.id === 'ct'));
+  assert.match(l.find((x) => x.id === '180').kw, /18-0/, 'a renamed app is still found by its old name');
   assert.equal(new Set(l.map((x) => x.id)).size, l.length);
 });
 
