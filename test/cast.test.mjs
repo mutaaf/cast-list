@@ -45,6 +45,11 @@ test('private entries never leave the building', () => {
   assert.ok(!out.some((a) => a.slug === 'secret' || 'visibility' in a));
 });
 
+test('Marquee\'s own demo page is not read as an app', () => {
+  const js = "const SEED_APPS = [\n  ['coldgas', 'COLD GAS', 'https://mutaafaziz.com/coldgas/', 'general', 1],\n  ['demo', 'Demo page', 'https://mutaafaziz.com/ads/demo/', 'general', 0],\n];";
+  assert.deepEqual(READERS.marquee(js).map((e) => e.id), ['coldgas']);
+});
+
 test('the launcher feed has exactly the launcher\'s shape and every launcher app', () => {
   const l = launcher(apps);
   assert.deepEqual(Object.keys(l[0]), ['id', 'name', 'tip', 'href', 'color', 'kind', 'kw']);
