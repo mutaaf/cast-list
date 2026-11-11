@@ -1,13 +1,7 @@
-# The audit: every six hours, and whenever the catalog changes, read every place that lists the apps,
-# compare it with the catalog and post the report to mutaafaziz.com/cast. A change in what's wrong is
-# published to Cue as cast.drift.changed. The audit never edits another repo: it reports.
+# The audit runs in the Worker now: Cue wakes it when a listing surface's repo is pushed (after the deploy
+# is live) and once a day as a safety net. Nothing here is on a timer. This job stays for running it by hand.
 name: Audit
 on:
-  schedule:
-    - cron: '17 */6 * * *'
-  push:
-    branches: [main]
-    paths: ['catalog/**', 'src/**']
   workflow_dispatch:
 concurrency:
   group: audit

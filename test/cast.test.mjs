@@ -145,3 +145,14 @@ test('a sentence that says an app is not on the App Store is not an overclaim', 
   assert.equal(claimsStore('KIN is not on the App Store, but Hinge Pop is on the App Store.'), true);
 });
 
+
+test('the audit reads every surface through the fetcher it is given', async () => {
+  const { audit } = await import('../src/audit.mjs');
+  const { publicApps } = await import('../src/store.mjs');
+  const catalog = JSON.parse((await import('node:fs')).readFileSync(new URL('../catalog/apps.json', import.meta.url), 'utf8'));
+  const seen = [];
+  const r = await audit(publicApps(catalog), { labs: 'https://example.test/labs', get: async (u) => { seen.push(u); throw new Error('offline'); } });
+  assert.ok(seen.includes('https://example.test/labs'));
+  assert.ok(seen.includes('https://mutaafaziz.com/llms.txt'));
+  assert.ok(Object.values(r.surfaces).every((s) => s.error || s.findings));
+});

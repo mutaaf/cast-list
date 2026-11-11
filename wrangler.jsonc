@@ -1,9 +1,11 @@
-// Cast List: the one app catalog. See README.md. Secret: DRIFT_TOKEN_HASH (sha256 of the audit job's token).
+// Cast List: the one app catalog. See README.md. Secrets: DRIFT_TOKEN_HASH (sha256 of the CLI audit's token), LABS_SOURCE.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cast-list",
   "main": "src/worker.mjs",
   "compatibility_date": "2026-10-01",
+  // The audit reads public pages on this same zone; this sends those fetches through the front door.
+  "compatibility_flags": ["global_fetch_strictly_public"],
   "routes": [{ "pattern": "mutaafaziz.com/cast", "zone_name": "mutaafaziz.com" }, { "pattern": "mutaafaziz.com/cast/*", "zone_name": "mutaafaziz.com" }],
   "workers_dev": false,
   "preview_urls": false,
