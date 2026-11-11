@@ -156,3 +156,14 @@ test('the audit reads every surface through the fetcher it is given', async () =
   assert.ok(seen.includes('https://mutaafaziz.com/llms.txt'));
   assert.ok(Object.values(r.surfaces).every((s) => s.error || s.findings));
 });
+
+test('only the audit token may post drift: Bearer, sha-256 match, nothing when unset', async () => {
+  const { driftCaller } = await import('../src/auth.mjs');
+  const { sha256 } = await import('stagehand');
+  const env = { DRIFT_TOKEN_HASH: await sha256('t0ken') };
+  const req = (h) => new Request('https://mutaafaziz.com/cast/api/drift', { method: 'POST', headers: h ? { authorization: h } : {} });
+  assert.ok(await driftCaller(req('Bearer t0ken'), env));
+  assert.equal(await driftCaller(req('Bearer nope'), env), null);
+  assert.equal(await driftCaller(req(null), env), null);
+  assert.equal(await driftCaller(req('Bearer t0ken'), {}), null);
+});
