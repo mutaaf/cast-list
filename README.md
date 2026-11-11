@@ -32,6 +32,7 @@ Audit job (every 6 h, and on catalog change) ──reads 10 surfaces──▶ dr
 - Every live public page on mutaafaziz.com names its `worker` and is on Playbill, or says why not in `notOn.playbill`. Playbill generates its routes and service bindings from this, so adding an app here is how it gets search copy.
 - Each surface's id for an app is unique, and an app has an id only on surfaces it's listed on.
 - Private entries never leave the Worker.
+- `listing.<surface>` holds the words a generated list uses for an app there (`name`, `url`, `text`; default: name, url, tagline). Its name must be the name or an `aka`, its link one the audit accepts. mutaafaziz.com renders its dock, /apps, llms.txt and resume.json from it (`scripts/apps.mjs` there), so those lists are generated, not typed.
 
 ## What the audit checks
 

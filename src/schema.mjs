@@ -6,6 +6,8 @@ export const PLATFORMS = ['web', 'ios', 'ipad', 'android', 'tv', 'visionos'];
 // Every place that lists apps. Each one is audited against the catalog (src/surfaces.mjs).
 export const SURFACES = ['launcher', 'dock', 'llms', 'resume', 'manifest', 'apps-page', 'playbill', 'marquee', 'labs', 'lobby'];
 export const ID_SURFACES = ['launcher', 'dock', 'playbill', 'marquee', 'labs'];
+// What listing.<surface> may say. Without it a generated surface uses the app's name, url and tagline.
+export const LISTING_KEYS = ['name', 'url', 'text'];
 
 // The host Playbill fronts. A live public page here gets search and AI-answer copy unless notOn.playbill says why not.
 export const PLAYBILL_HOST = 'mutaafaziz.com';
@@ -56,6 +58,16 @@ export function check(catalog) {
     }
     if ((a.surfaces ?? []).includes('playbill') && !a.ids?.playbill) bad(a, 'is on Playbill but has no ids.playbill');
     if (a.ads === false && (a.surfaces ?? []).includes('marquee')) bad(a, 'ads: false, so it can never be on Marquee');
+    // Per-surface copy (listing.<surface>): the words a generated list uses for this app there. Its name must be a
+    // sanctioned name (name or aka) and its link one the audit accepts, so a generated surface always agrees.
+    for (const [s, l] of Object.entries(a.listing ?? {})) {
+      if (!(a.surfaces ?? []).includes(s)) bad(a, `has listing.${s} but isn't listed on ${s}`);
+      if (!l || typeof l !== 'object' || Array.isArray(l)) { bad(a, `listing.${s} must be an object`); continue; }
+      for (const k of Object.keys(l)) if (!LISTING_KEYS.includes(k)) bad(a, `listing.${s}.${k} is not one of ${LISTING_KEYS.join(', ')}`);
+      if (l.name !== undefined && ![a.name, ...(a.aka ?? [])].includes(l.name)) bad(a, `listing.${s}.name "${l.name}" must be its name or one of its aka`);
+      if (l.url !== undefined && ![a.url, ...(a.urls ?? []), ...(a.repo ? [`https://github.com/mutaaf/${a.repo}`] : [])].includes(l.url)) bad(a, `listing.${s}.url must be its url, one of its urls or its repo`);
+      if (l.text !== undefined && (typeof l.text !== 'string' || !l.text.trim() || l.text.length > 4000 || /[\r\n<>]/.test(l.text))) bad(a, `listing.${s}.text must be one line of plain text, at most 4000 characters`);
+    }
   }
   return errors;
 }

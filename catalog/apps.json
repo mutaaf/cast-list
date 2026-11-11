@@ -2,6 +2,59 @@
   "$comment": "The one list of the portfolio's apps. Edit here, nowhere else: every launcher, page, feed and service reads this or is audited against it. Store status is NOT typed here; it comes live from App Store Connect through Stage Manager. Schema: src/schema.mjs.",
   "apps": [
     {
+      "slug": "agent-fleet",
+      "name": "agent-fleet",
+      "aka": [
+        "agent-fleet + fleet-control",
+        "fleet-control"
+      ],
+      "kind": "library",
+      "status": "live",
+      "audience": "general",
+      "url": "https://github.com/mutaaf/agent-fleet",
+      "repo": "agent-fleet",
+      "tagline": "One shared engine for the autonomous coding agents across many repos.",
+      "color": "#1B2433",
+      "added": "2026-05-26",
+      "keywords": [
+        "agent fleet fleet-control autonomous coding agents claude code ci auto-merge reviewer kill date engine"
+      ],
+      "ids": {},
+      "surfaces": [
+        "resume"
+      ],
+      "listing": {
+        "resume": {
+          "name": "agent-fleet + fleet-control",
+          "text": "One shared engine for autonomous coding agents across many repos: scheduled ship, groom, review and eng jobs run Claude Code in fresh checkouts; auto-merge lands work only on green CI; the reviewer can block but never approve; self-healing is capped at two attempts; local jobs have a kill date and cloud routines a pause switch."
+        }
+      }
+    },
+    {
+      "slug": "estate-agent",
+      "name": "estate-agent",
+      "kind": "library",
+      "status": "live",
+      "audience": "general",
+      "url": "https://github.com/mutaaf/estate-agent",
+      "repo": "estate-agent",
+      "tagline": "A standard for AI agents working across many repos: context files, a service map, guardrails.",
+      "color": "#2B2F24",
+      "added": "2026-08-14",
+      "keywords": [
+        "estate agent ai agents many repos context file service map guardrails open source mit"
+      ],
+      "ids": {},
+      "surfaces": [
+        "resume"
+      ],
+      "listing": {
+        "resume": {
+          "text": "A standard for AI agents working across many repos: one context file per repo, a cross-repo service map with evidence, guardrails that block credential access."
+        }
+      }
+    },
+    {
       "slug": "digital-craft",
       "name": "Digital Craft AI",
       "kind": "company",
@@ -79,6 +132,13 @@
         "playbill",
         "marquee"
       ],
+      "listing": {
+        "resume": {
+          "name": "mutaafaziz.com",
+          "url": "https://mutaafaziz.com/AGENTS.md",
+          "text": "A six-edition, single-file website edited by AI agents under a public operating manual, with a plain-text brief for AI readers at /llms.txt."
+        }
+      },
       "urls": [
         "https://mutaafaziz.com/AGENTS.md"
       ]
@@ -120,7 +180,15 @@
         "playbill",
         "marquee",
         "labs"
-      ]
+      ],
+      "listing": {
+        "llms": {
+          "text": "browser flight simulator over real satellite imagery of Dallas–Fort Worth, with live weather. https://mutaafaziz.com/openaero/"
+        },
+        "resume": {
+          "text": "A browser flight simulator over real satellite imagery of Dallas–Fort Worth, developed by three scheduled cloud agents behind CI; every merge deploys."
+        }
+      }
     },
     {
       "slug": "outatime",
@@ -156,7 +224,15 @@
         "playbill",
         "marquee",
         "labs"
-      ]
+      ],
+      "listing": {
+        "llms": {
+          "text": "neon time-travel arcade racer for the browser. https://mutaafaziz.com/outatime/"
+        },
+        "resume": {
+          "text": "A neon time-travel arcade racer for the browser, developed by three scheduled cloud agents behind CI; every merge deploys."
+        }
+      }
     },
     {
       "slug": "cold-gas",
@@ -204,7 +280,19 @@
         "marquee",
         "labs",
         "lobby"
-      ]
+      ],
+      "listing": {
+        "apps-page": {
+          "name": "Cold Gas",
+          "text": "A physics stunt game. Fly a roadster on ten thrusters, let go upside down and stick the landing in front of three judges."
+        },
+        "llms": {
+          "text": "keynote-minimal 3D stunt game for the browser. Drive an electric roadster up a ramp, fire ten cold-gas thrusters to clear a row of parked EVs, roll it 360° and stick the landing; an AI judge panel scores each jump. https://mutaafaziz.com/coldgas/ https://github.com/mutaaf/cold-gas"
+        },
+        "resume": {
+          "text": "A 3D browser stunt game: an electric roadster clears a row of parked EVs on ten cold-gas thrusters, rolls 360° and sticks the landing; an AI judge panel scores each jump."
+        }
+      }
     },
     {
       "slug": "hearth",
@@ -254,6 +342,17 @@
         "labs",
         "lobby"
       ],
+      "listing": {
+        "apps-page": {
+          "text": "One remote for every TV in the house: LG, Samsung, Roku, Google TV and Apple TV, straight over your own Wi-Fi with no account."
+        },
+        "llms": {
+          "text": "one remote for every TV in the house. Finds the LG and Samsung smart TVs on your Wi-Fi and turns every phone into a fast, ad-free remote (swipe pad, volume, app shelf, inputs, messages on screen, one button that turns every TV off). Runs on your home network, no accounts or cloud. Public demo with pretend TVs. https://mutaafaziz.com/hearth/ https://mutaafaziz.com/hearth/demo/ https://github.com/mutaaf/hearth"
+        },
+        "resume": {
+          "text": "One remote for every TV in the house: finds the LG and Samsung smart TVs on your Wi-Fi and turns every phone into a fast, ad-free remote. Runs on the home network, no accounts or cloud; public demo at https://mutaafaziz.com/hearth/demo/. Source: https://github.com/mutaaf/hearth"
+        }
+      },
       "urls": [
         "https://mutaafaziz.com/hearth/demo/"
       ]
@@ -284,7 +383,15 @@
         "resume",
         "manifest",
         "playbill"
-      ]
+      ],
+      "listing": {
+        "llms": {
+          "text": "a calm full-screen prayer clock that plays the adhan at each of the five daily prayers (Fajr, Dhuhr, Asr, Maghrib, Isha); Fajr has its own adhan. Prayer times are calculated on the device (check the settings with your local masjid). Web clock ready now, on any screen with a browser, TVs included: open adhantv.live on the TV and set it up from your phone with the QR code or short code it shows (portrait or landscape); Android phone, tablet and Android TV / Google TV app as an APK now, Google Play coming soon (testers welcome at /beta); an Android phone, tablet or Google TV on the same Wi-Fi casts the adhan to your Google Nest speakers and Nest Hubs; an Alexa skill for Echo and Echo Show is live on the Alexa Skills Store (US) (say \"Alexa, enable Adhan Clock\", sign in with Amazon to link your prayer settings (the linking page fills in your area from your internet connection; the place, calculation and adhans can be changed there), then add one Routine; https://adhantv.live/alexa walks through the four steps, checks each one as Alexa reports it after you sign in with Amazon, and has a \"Test my Echo\" button that plays a short test adhan on your Echo through your Routine; \"Alexa, ask Adhan Clock to play the adhan\" also understands azan, azaan, athan and call to prayer; it also answers questions such as \"Alexa, ask Adhan Clock when is the next prayer\", what time is Asr, what are the prayer times today, when is iftar, when does suhoor end and what is the Hijri date); a masjid profile lets one admin keep every screen's settings and uploaded adhans in step, and each screen keeps its own orientation; a choice of openly licensed adhans with previews (Makkah 2018 by default, Malmö for Fajr), and the dua after the adhan is read aloud after each adhan; old phones and tablets can be a dedicated clock (guide: https://adhantv.live/devices). No accounts, no ads, no analytics in the clock; location stays on the device; only Alexa or Google Home linking and a masjid profile store prayer settings (coordinates, time zone, choices) on the server (a masjid profile also keeps its uploaded adhans), and setting up a TV from your phone holds them for 15 minutes at most. Interactive setup guide: https://mutaafaziz.com/adhan/ https://adhantv.live https://adhantv.live/android"
+        },
+        "resume": {
+          "text": "A calm full-screen prayer clock that plays the adhan at each of the five daily prayers (Fajr, Dhuhr, Asr, Maghrib, Isha), with prayer times calculated on the device. Runs on the web, as an Android phone, tablet and TV app (APK), casts to Google Nest speakers from Android, and is live as an Alexa skill in the US. No accounts, no ads, no analytics in the clock. App: https://adhantv.live"
+        }
+      }
     },
     {
       "slug": "chalk-talk",
@@ -320,7 +427,15 @@
         "playbill",
         "marquee",
         "labs"
-      ]
+      ],
+      "listing": {
+        "llms": {
+          "text": "say or sketch a play and watch it draw itself in light: X's and O's for youth basketball and flag football (5v5 and 7v7) coaches, with an AI that takes over your sketch, names the concept and suggests improvements. Football adds the route tree, coverages (Man, Cover 1 to 4) and the QB's half or full field reads. Bring your own Claude or OpenAI key; it stays in the browser. https://mutaafaziz.com/chalktalk/ https://github.com/mutaaf/chalk-talk"
+        },
+        "resume": {
+          "text": "Say or sketch a play and watch it draw itself in light: X's and O's for youth basketball and flag football coaches, with an AI that takes over your sketch. Sport-agnostic engine, route tree, coverages and QB reads, bring-your-own-key AI."
+        }
+      }
     },
     {
       "slug": "kin",
@@ -362,7 +477,15 @@
         "marquee",
         "labs",
         "lobby"
-      ]
+      ],
+      "listing": {
+        "llms": {
+          "text": "a tiny, original, autonomous creature that lives under your real sky; its little diorama follows your actual time of day, sun angle, temperature, wind, rain and snow. It hatches from a cocoon with no signup, you pet it, it has moods and a memory book (visits, hosted visits, its AI director's thoughts and its hatch, kept on the device). Care and play: feed, bath, brush, throw-and-fetch, tuck in, a garden, tricks and collectibles. A Think button asks an AI director (a free edge model, or your own Claude, OpenAI, xAI or Gemini key), shown live in an aurora-field theatre. Put two phones or tablets side by side and slide one finger from one screen onto the other: that invisibly links them (no QR codes), and your KIN hops onto your friend's screen, where their KIN reacts in its own way. Two browser windows side by side on one computer work too. Runs in the browser, including Safari on iPhone and iPad. https://mutaafaziz.com/kin/ https://mutaafaziz.com/kin/about/ https://github.com/mutaaf/kin"
+        },
+        "resume": {
+          "text": "A tiny autonomous creature that lives under your real sky (time of day, sun angle, temperature, wind, rain, snow). Put two phones or tablets side by side and slide a finger across: they link invisibly and KIN hops onto the other screen. Runs in the browser, including Safari on iPhone and iPad. Source: https://github.com/mutaaf/kin"
+        }
+      }
     },
     {
       "slug": "hinge-pop",
@@ -404,7 +527,18 @@
         "playbill",
         "labs",
         "lobby"
-      ]
+      ],
+      "listing": {
+        "apps-page": {
+          "text": "An arcade game where a hinge across the screen is the hazard. Split the bubbles, keep them off the line, and snap it to fling them back."
+        },
+        "llms": {
+          "text": "an arcade prototype at https://mutaafaziz.com/hingepop/ where a hinge across the screen is the hazard. Tap a bubble to split it and flick to aim the pieces. A larger bubble that crosses the hinge charges an overload meter that costs shields; the smallest bubble pops on the hinge for free. Levels start with one slow bubble and add one per level. Two players can share one screen, one side of the hinge each. It runs in the browser with no signup and uses plain circles for now. Source: https://github.com/mutaaf/hinge-pop"
+        },
+        "resume": {
+          "text": "An arcade prototype where a hinge across the screen is the hazard: split bubbles and keep them off the hinge, across levels that start with one slow bubble, with a two-player mode on one screen. Source: https://github.com/mutaaf/hinge-pop"
+        }
+      }
     },
     {
       "slug": "metaphases",
@@ -438,7 +572,15 @@
         "manifest",
         "playbill",
         "labs"
-      ]
+      ],
+      "listing": {
+        "llms": {
+          "text": "every earnings report, phase by phase. An earnings calendar that reads the room: who reports when (~650 popular companies, or every $1B+ reporter), with report timing drawn as moon phases (waxing = before the open, full = during market hours, waning = after the close); how each stock reacted to its last four reports; rules-based, explained setup and quality grades (A+ to F) ported from Market Digest and Compass; a live Market Mood fear↔greed gauge built from six inspectable signals; Compass, an ETF look-through that shows which reports move your stocks and funds; and Retrace, which grades the month's reports against consensus. Grades are not advice. https://mutaafaziz.com/metaphases/ https://mutaafaziz.com/metaphases/t/NVDA (any ticker's sheet) https://github.com/mutaaf/metaphases"
+        },
+        "resume": {
+          "text": "Every earnings report, phase by phase: an earnings calendar with report timing drawn as moon phases, each stock's reaction to its last four reports, rules-based setup and quality grades ported from Market Digest, a live fear-greed gauge, ETF look-through exposure, and Retrace, which grades the month against consensus. Source: https://github.com/mutaaf/metaphases"
+        }
+      }
     },
     {
       "slug": "moon-club",
@@ -472,7 +614,7 @@
         "No ads, no analytics, no sign-up."
       ],
       "keywords": [
-        "metaphases kids moon club market moon club luna money kids children family piggy bank saving allowance candles candlesticks charts stocks learn finance iphone ipad"
+        "metaphases kids moon club market moon club luna money kids children family piggy bank saving allowance candles candlesticks charts stocks learn finance iphone ipad lemonade stand"
       ],
       "ids": {
         "launcher": "mpk",
@@ -489,6 +631,22 @@
         "labs",
         "lobby"
       ],
+      "listing": {
+        "dock": {
+          "name": "Metaphases Kids"
+        },
+        "apps-page": {
+          "text": "Learn how money and markets work by playing, with Luna as your guide. Pretend money only, always."
+        },
+        "llms": {
+          "name": "Metaphases Kids",
+          "text": "the Market Moon Club, money and charts for kids with Luna. One-minute lessons, a lemonade-stand game and a pretend piggy bank that follows real prices, for ages 8 to 12. No ads, no sign-up, nothing to buy. Its native iPhone and iPad app, Moon Club, is on the App Store; the app page keeps the download behind a grown-up gate. https://mutaafaziz.com/metaphases/kids/ https://mutaafaziz.com/metaphases/kids/app https://github.com/mutaaf/metaphases"
+        },
+        "resume": {
+          "name": "Metaphases Kids",
+          "text": "The Market Moon Club: money and charts for kids, with Luna. One-minute lessons, a lemonade-stand game and a pretend piggy bank that follows real prices, for ages 8 to 12, with no ads, no sign-up and nothing to buy. Its native iPhone and iPad app, Moon Club, is on the App Store. Source: https://github.com/mutaaf/metaphases"
+        }
+      },
       "ads": false,
       "notOn": {
         "playbill": "Its web page is the grown-up gate in front of the App Store download, so it is not decorated or pushed to search."
@@ -529,7 +687,66 @@
         "manifest",
         "playbill",
         "marquee"
-      ]
+      ],
+      "listing": {
+        "dock": {
+          "name": "Leadership Library"
+        },
+        "llms": {
+          "text": "the books on engineering leadership I keep coming back to (Stanier, Larson, Fournier, DeMarco and Lister, Beck, Lencioni, Pink, Kim Scott, Greene, Robert C. Martin, Forsgren, Humble and Kim), each with a labelled summary of its argument; my own interpretation, applications, critique and dated reflections are added as I write them, and nothing personal is invented. On the iPhone Duo it becomes a book: one page closed, a two-page spread open. https://mutaafaziz.com/library/ https://github.com/mutaaf/library"
+        },
+        "resume": {
+          "text": "The books on engineering leadership I keep coming back to, each with a labelled summary of its argument; my own notes are added as I write them. On the iPhone Duo it becomes a book. Source: https://github.com/mutaaf/library"
+        }
+      }
+    },
+    {
+      "slug": "manifest",
+      "name": "AI-Native Manifest",
+      "kind": "library",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/manifest/",
+      "worker": "mutaafaziz-site",
+      "tagline": "Everything shipped, then how it got built.",
+      "color": "#0A0F26",
+      "added": "2026-11-05",
+      "keywords": [
+        "manifest ai-native manifest shipped products sdlc how it got built process agents rules everything i've"
+      ],
+      "ids": {
+        "dock": "mfst"
+      },
+      "surfaces": [
+        "dock"
+      ],
+      "notOn": {
+        "playbill": "A page of mutaafaziz.com itself, so the site's own Playbill entry and sitemap cover it."
+      }
+    },
+    {
+      "slug": "ensemble",
+      "name": "The Ensemble",
+      "kind": "library",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/ensemble/",
+      "worker": "mutaafaziz-site",
+      "tagline": "The services between the apps, explained six ways.",
+      "color": "#0C0708",
+      "added": "2026-11-10",
+      "keywords": [
+        "ensemble shared services cue prompter stage manager cast list playbill marquee lobby explained eli5 architect cto ceo"
+      ],
+      "ids": {
+        "dock": "ens"
+      },
+      "surfaces": [
+        "dock"
+      ],
+      "notOn": {
+        "playbill": "A page of mutaafaziz.com itself, so the site's own Playbill entry and sitemap cover it."
+      }
     },
     {
       "slug": "17-0",
@@ -574,7 +791,19 @@
         "playbill",
         "marquee",
         "lobby"
-      ]
+      ],
+      "listing": {
+        "dock": {
+          "name": "18-0"
+        },
+        "apps-page": {
+          "text": "A football history puzzle. Seven spins, seven picks, and a rating model that grades each season against its own era."
+        },
+        "llms": {
+          "name": "18-0",
+          "text": "pro football history game with deterministic, era-normalized ratings over 2,994 real seasons. https://18-0.co"
+        }
+      }
     },
     {
       "slug": "fantasy-edge",
@@ -601,7 +830,12 @@
         "launcher",
         "dock",
         "llms"
-      ]
+      ],
+      "listing": {
+        "llms": {
+          "text": "one console for every fantasy league you play. https://github.com/mutaaf/fantasy-edge"
+        }
+      }
     },
     {
       "slug": "family-xp",
@@ -647,7 +881,12 @@
         "launcher",
         "dock",
         "llms"
-      ]
+      ],
+      "listing": {
+        "llms": {
+          "text": "voice-first coaching intelligence for youth sports. https://youthsportsiq.com"
+        }
+      }
     },
     {
       "slug": "aurora-field",
@@ -661,7 +900,7 @@
       "color": "#0B1416",
       "added": "2026-10-18",
       "keywords": [
-        "aurora-field particles webgl sky helm ranger open source library web component storyboard"
+        "aurora-field particles webgl sky helm ranger open source library web component storyboard jarvis iron man power rangers"
       ],
       "ids": {
         "launcher": "af",
@@ -672,96 +911,15 @@
         "dock",
         "llms",
         "resume"
-      ]
-    },
-    {
-      "slug": "agent-fleet",
-      "name": "agent-fleet",
-      "aka": [
-        "agent-fleet + fleet-control",
-        "fleet-control"
       ],
-      "kind": "library",
-      "status": "live",
-      "audience": "general",
-      "url": "https://github.com/mutaaf/agent-fleet",
-      "repo": "agent-fleet",
-      "tagline": "One shared engine for the autonomous coding agents across many repos.",
-      "color": "#1B2433",
-      "added": "2026-05-26",
-      "keywords": [
-        "agent fleet fleet-control autonomous coding agents claude code ci auto-merge reviewer kill date engine"
-      ],
-      "ids": {},
-      "surfaces": [
-        "resume"
-      ]
-    },
-    {
-      "slug": "estate-agent",
-      "name": "estate-agent",
-      "kind": "library",
-      "status": "live",
-      "audience": "general",
-      "url": "https://github.com/mutaaf/estate-agent",
-      "repo": "estate-agent",
-      "tagline": "A standard for AI agents working across many repos: context files, a service map, guardrails.",
-      "color": "#2B2F24",
-      "added": "2026-08-14",
-      "keywords": [
-        "estate agent ai agents many repos context file service map guardrails open source mit"
-      ],
-      "ids": {},
-      "surfaces": [
-        "resume"
-      ]
-    },
-    {
-      "slug": "manifest",
-      "name": "AI-Native Manifest",
-      "kind": "library",
-      "status": "live",
-      "audience": "general",
-      "url": "https://mutaafaziz.com/manifest/",
-      "worker": "mutaafaziz-site",
-      "tagline": "Everything shipped, then how it got built.",
-      "color": "#0A0F26",
-      "added": "2026-11-05",
-      "keywords": [
-        "manifest ai-native manifest shipped products sdlc how it got built process agents rules"
-      ],
-      "ids": {
-        "dock": "mfst"
-      },
-      "surfaces": [
-        "dock"
-      ],
-      "notOn": {
-        "playbill": "A page of mutaafaziz.com itself, so the site's own Playbill entry and sitemap cover it."
-      }
-    },
-    {
-      "slug": "ensemble",
-      "name": "The Ensemble",
-      "kind": "library",
-      "status": "live",
-      "audience": "general",
-      "url": "https://mutaafaziz.com/ensemble/",
-      "worker": "mutaafaziz-site",
-      "tagline": "The services between the apps, explained six ways.",
-      "color": "#0C0708",
-      "added": "2026-11-10",
-      "keywords": [
-        "ensemble shared services cue prompter stage manager cast list playbill marquee lobby explained"
-      ],
-      "ids": {
-        "dock": "ens"
-      },
-      "surfaces": [
-        "dock"
-      ],
-      "notOn": {
-        "playbill": "A page of mutaafaziz.com itself, so the site's own Playbill entry and sitemap cover it."
+      "listing": {
+        "dock": {
+          "text": "The open-source particle library behind this sky, the helm and the ranger."
+        },
+        "resume": {
+          "url": "https://github.com/mutaaf/aurora-field",
+          "text": "Open-source particle-field canvas library (zero dependencies, ES5, tested), with on-device face tracking. The sky on mutaafaziz.com."
+        }
       }
     }
   ]
