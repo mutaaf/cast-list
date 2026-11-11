@@ -4,13 +4,11 @@
 //   node scripts/drift.mjs --post     also post it (needs DRIFT_TOKEN)
 // LABS_SOURCE (optional) is where the Labs page's list lives. CAST_URL defaults to the live service.
 import { readFileSync } from 'node:fs';
-import { SOURCES, lobbySource } from '../src/sources.mjs';
+import { audit } from '../src/audit.mjs';
 import { publicApps } from '../src/store.mjs';
-import { report } from '../src/report.mjs';
 
 const CAST = process.env.CAST_URL ?? 'https://mutaafaziz.com/cast';
 const catalog = JSON.parse(readFileSync(new URL('../catalog/apps.json', import.meta.url), 'utf8'));
-const get = async (u) => { const r = await fetch(u, { headers: { 'user-agent': 'cast-list-audit (+https://mutaafaziz.com/cast/)' } }); if (!r.ok) throw new Error(`${r.status} from ${u.replace(/^https:\/\/raw\.githubusercontent\.com\/[^/]+\/([^/]+)\/.*/, 'GitHub $1')}`); return r.text(); };
 
 // Store facts come from the live service (Stage Manager behind it); the catalog itself is this checkout's.
 let apps = publicApps(catalog);
@@ -20,10 +18,7 @@ try {
   apps = apps.map((a) => (facts[a.slug] ? { ...a, install: facts[a.slug] } : a));
 } catch (e) { console.error(`no live store facts (${e.message}); status checks skipped`); }
 
-const sources = { ...SOURCES, labs: process.env.LABS_SOURCE || null };
-const texts = Object.fromEntries(await Promise.all(Object.entries(sources).filter(([, u]) => u).map(async ([s, u]) => [s, await get(u).catch((e) => e)])));
-const lobby = Object.fromEntries(await Promise.all(apps.filter((a) => a.surfaces.includes('lobby')).map(async (a) => [a.slug, await get(lobbySource(a.store?.lobbyRepo ?? a.repo)).catch(() => null)])));
-const r = report(apps, texts, lobby);
+const r = await audit(apps, { labs: process.env.LABS_SOURCE || null });
 
 for (const [s, v] of Object.entries(r.surfaces)) {
   console.log(v.error ? `✗ ${s}: ${v.error}` : `${v.findings.some((f) => f.severity !== 'low') ? '•' : '✓'} ${s}: ${v.right}/${v.expected} right`);

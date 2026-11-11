@@ -1,10 +1,11 @@
 // Cast List: the portfolio's one app catalog. The catalog is code (catalog/apps.json, checked in CI);
-// store facts are live from Stage Manager; the drift report comes from the scheduled audit job.
+// store facts are live from Stage Manager; the audit runs here, woken by Cue (a push to a surface's repo, and daily).
 import { WorkerEntrypoint } from 'cloudflare:workers';
 import catalog from '../catalog/apps.json';
 import { publicApps } from './store.mjs';
 import { launcher, jsonld } from './feeds.mjs';
 import { page } from './page.mjs';
+import { audit } from './audit.mjs';
 
 const VERSION = (() => { let h = 2166136261; for (const c of JSON.stringify(catalog)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36); })();
 // No ETag: a feed can change with the code while the catalog doesn't, and five minutes of cache is enough.
@@ -39,6 +40,21 @@ export default class CastList extends WorkerEntrypoint {
     if (!this.env.DRIFT_TOKEN_HASH || (await sha256(auth.replace(/^Bearer /, ''))) !== this.env.DRIFT_TOKEN_HASH) return json({ error: 'a valid token is required' }, 401, { 'cache-control': 'no-store' });
     let r; try { r = await req.json(); } catch { return json({ error: 'the body must be JSON' }, 400); }
     if (!r?.surfaces || typeof r.sig !== 'string' || JSON.stringify(r).length > 200_000) return json({ error: 'not a drift report' }, 400);
+    return json(await this.keep(r), 200, { 'cache-control': 'no-store' });
+  }
+
+  // Cue calls this when a listing surface's repo is pushed (after its deploy is live) and once a day.
+  // Store facts come straight from Stage Manager, so the Worker never fetches itself.
+  async audit() {
+    const s = await this.snapshot();
+    const r = await audit(publicApps(catalog, s.apps), { labs: this.env.LABS_SOURCE || null });
+    // A network blip that blanks most surfaces mustn't overwrite a good report: throw, and Cue retries.
+    if (Object.values(r.surfaces).filter((v) => v.error).length > Object.keys(r.surfaces).length / 2) throw new Error('most surfaces could not be read; not trusting this audit');
+    const kept = await this.keep(r);
+    return { ...kept, totals: r.totals };
+  }
+
+  async keep(r) {
     const before = await this.env.KV.get('drift', 'json');
     await this.env.KV.put('drift', JSON.stringify(r));
     let published = false;
@@ -47,6 +63,6 @@ export default class CastList extends WorkerEntrypoint {
       const out = await this.env.CUE.publish({ type: 'cast.drift.changed', id: `drift:${r.at.slice(0, 13)}:${(await sha256(r.sig)).slice(0, 12)}`.replace(/[^\w.:-]/g, '_'), data: { surfaces: t.surfaces ?? 0, agree: t.agree ?? 0, high: t.high ?? 0, medium: t.medium ?? 0 } }).catch(() => null);
       published = Boolean(out?.ok);
     }
-    return json({ ok: true, changed: before?.sig !== r.sig, published }, 200, { 'cache-control': 'no-store' });
+    return { ok: true, changed: before?.sig !== r.sig, published };
   }
 }
