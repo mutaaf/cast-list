@@ -3,10 +3,11 @@
   "private": true,
   "type": "module",
   "engines": { "node": ">=22" },
+  "dependencies": { "stagehand": "github:mutaaf/stagehand#v1.0.0" },
   "scripts": {
     "test": "node --test \"test/*.test.mjs\"",
     "check": "npm test && npx --yes wrangler@4 deploy --dry-run --outdir /tmp/cast-dry >/dev/null && echo bundle-ok",
     "drift": "node scripts/drift.mjs",
-    "deploy": "npm test && npx --yes wrangler@4 deploy && curl -sf https://mutaafaziz.com/cast/api/health"
+    "deploy": "npm ci --no-audit --no-fund && npm test && npx --yes wrangler@4 deploy && curl -sf https://mutaafaziz.com/cast/api/health"
   }
 }

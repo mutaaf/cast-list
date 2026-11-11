@@ -6,19 +6,31 @@ import { publicApps } from './store.mjs';
 import { launcher, jsonld } from './feeds.mjs';
 import { page } from './page.mjs';
 import { audit } from './audit.mjs';
+import { driftCaller } from './auth.mjs';
+import { sha256, log, timed } from 'stagehand';
 
 const VERSION = (() => { let h = 2166136261; for (const c of JSON.stringify(catalog)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36); })();
 // No ETag: a feed can change with the code while the catalog doesn't, and five minutes of cache is enough.
 const headers = (type, extra = {}) => ({ 'content-type': type, 'cache-control': 'public, max-age=300', 'access-control-allow-origin': '*', ...extra });
 const json = (b, s = 200, h = {}) => new Response(JSON.stringify(b, null, 1), { status: s, headers: headers('application/json; charset=utf-8', h) });
-const sha256 = async (s) => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)))].map((b) => b.toString(16).padStart(2, '0')).join('');
 
 export default class CastList extends WorkerEntrypoint {
   async snapshot() { try { return (await this.env.STAGE?.snapshot()) ?? { apps: {} }; } catch { return { apps: {} }; } }
   async apps() { const s = await this.snapshot(); return { version: VERSION, storeAt: s.at ?? null, apps: publicApps(catalog, s.apps) }; }
   async app(slug) { return (await this.apps()).apps.find((a) => a.slug === slug) ?? null; }
 
+  // One log line per request and per audit: {service: 'cast-list', event, ms, ok}. Unknown paths are logged as
+  // 'unmatched', never as typed.
   async fetch(req) {
+    const t = Date.now();
+    let res;
+    try { res = await this.route(req); } catch (e) { log('cast-list', 'request', { method: req.method, ms: Date.now() - t, ok: false, error: String(e?.message ?? e).slice(0, 200) }); throw e; }
+    const path = new URL(req.url).pathname.replace(/\/+$/, '') || '/';
+    log('cast-list', 'request', { method: req.method, route: res.status === 404 ? 'unmatched' : path.startsWith('/cast/api/apps/') ? '/cast/api/apps/*' : path, status: res.status, ms: Date.now() - t, ok: res.status < 500 });
+    return res;
+  }
+
+  async route(req) {
     const url = new URL(req.url), path = url.pathname.replace(/\/+$/, '') || '/';
     if (path === '/cast/api/apps') return json(await this.apps());
     if (path.startsWith('/cast/api/apps/')) { const a = await this.app(path.slice(15)); return a ? json(a) : json({ error: 'no such app' }, 404); }
@@ -36,8 +48,7 @@ export default class CastList extends WorkerEntrypoint {
 
   // The audit job posts its report here. A change in what's wrong is an event, so agents and the owner hear about it.
   async takeDrift(req) {
-    const auth = req.headers.get('authorization') ?? '';
-    if (!this.env.DRIFT_TOKEN_HASH || (await sha256(auth.replace(/^Bearer /, ''))) !== this.env.DRIFT_TOKEN_HASH) return json({ error: 'a valid token is required' }, 401, { 'cache-control': 'no-store' });
+    if (!(await driftCaller(req, this.env))) return json({ error: 'a valid token is required' }, 401, { 'cache-control': 'no-store' });
     let r; try { r = await req.json(); } catch { return json({ error: 'the body must be JSON' }, 400); }
     if (!r?.surfaces || typeof r.sig !== 'string' || JSON.stringify(r).length > 200_000) return json({ error: 'not a drift report' }, 400);
     return json(await this.keep(r), 200, { 'cache-control': 'no-store' });
@@ -46,6 +57,10 @@ export default class CastList extends WorkerEntrypoint {
   // Cue calls this when a listing surface's repo is pushed (after its deploy is live) and once a day.
   // Store facts come straight from Stage Manager, so the Worker never fetches itself.
   async audit() {
+    return timed('cast-list', 'audit', () => this.runAudit());
+  }
+
+  async runAudit() {
     const s = await this.snapshot();
     const r = await audit(publicApps(catalog, s.apps), { labs: this.env.LABS_SOURCE || null });
     // A network blip that blanks most surfaces mustn't overwrite a good report: throw, and Cue retries.

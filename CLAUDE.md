@@ -11,6 +11,7 @@ Read README.md first. AGENTS.md has the rules.
 | llms.txt is prose | It's judged on presence and status claims only, matched by name first. |
 | Store status lags | It's Stage Manager's last hourly read; `storeAt` says when. |
 | The audit token | `~/.config/cast-list/drift-token` (mode 600) and the `DRIFT_TOKEN` repo secret; the Worker holds only its sha256. |
+| Dependencies | The token check and the log line come from [stagehand](https://github.com/mutaaf/stagehand) (GitHub dependency). `npm ci` before `npm test`; CI and `npm run deploy` do it. |
 
 ## Definition of done
 
