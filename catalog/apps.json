@@ -715,6 +715,54 @@
       "surfaces": [
         "resume"
       ]
+    },
+    {
+      "slug": "manifest",
+      "name": "AI-Native Manifest",
+      "kind": "library",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/manifest/",
+      "worker": "mutaafaziz-site",
+      "tagline": "Everything shipped, then how it got built.",
+      "color": "#0A0F26",
+      "added": "2026-11-05",
+      "keywords": [
+        "manifest ai-native manifest shipped products sdlc how it got built process agents rules"
+      ],
+      "ids": {
+        "dock": "mfst"
+      },
+      "surfaces": [
+        "dock"
+      ],
+      "notOn": {
+        "playbill": "A page of mutaafaziz.com itself, so the site's own Playbill entry and sitemap cover it."
+      }
+    },
+    {
+      "slug": "ensemble",
+      "name": "The Ensemble",
+      "kind": "library",
+      "status": "live",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/ensemble/",
+      "worker": "mutaafaziz-site",
+      "tagline": "The services between the apps, explained six ways.",
+      "color": "#0C0708",
+      "added": "2026-11-10",
+      "keywords": [
+        "ensemble shared services cue prompter stage manager cast list playbill marquee lobby explained"
+      ],
+      "ids": {
+        "dock": "ens"
+      },
+      "surfaces": [
+        "dock"
+      ],
+      "notOn": {
+        "playbill": "A page of mutaafaziz.com itself, so the site's own Playbill entry and sitemap cover it."
+      }
     }
   ]
 }
