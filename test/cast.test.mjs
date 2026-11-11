@@ -29,7 +29,20 @@ test('the rules catch the mistakes that already happened once', () => {
   assert.deepEqual(check({ apps: [{ ...off, notOn: { playbill: 'A page that should not be ranked, for a stated reason.' } }] }), []);
   assert.match(check({ apps: [{ ...off, notOn: { playbill: 'no' } }] }).join(), /needs a reason/);
   assert.match(check({ apps: [{ ...hp, worker: undefined }] }).join(), /needs worker/);
-  assert.match(check({ apps: [catalog.apps[0], { ...catalog.apps[1], ids: { launcher: catalog.apps[0].ids.launcher } }] }).join(), /used twice/);
+  const [dc, cto] = ['digital-craft', 'fractional-cto'].map((s) => catalog.apps.find((a) => a.slug === s));
+  assert.match(check({ apps: [dc, { ...cto, ids: { launcher: dc.ids.launcher } }] }).join(), /used twice/);
+});
+
+test('per-surface copy uses a sanctioned name and link, on a surface the app is listed on', () => {
+  const bad = (listing) => check({ apps: [{ ...moon, listing }] }).join('\n');
+  assert.equal(bad({ dock: { name: 'Metaphases Kids', text: 'Money and charts for kids.' } }), '');
+  assert.match(bad({ dock: { name: 'Moon Club Pro' } }), /must be its name or one of its aka/);
+  assert.match(bad({ marquee: { text: 'Ads here' } }), /isn't listed on marquee/);
+  assert.match(bad({ resume: { url: 'https://example.com/' } }), /must be its url/);
+  assert.match(bad({ llms: { text: '<b>bold</b>' } }), /plain text/);
+  assert.match(bad({ llms: { blurb: 'x' } }), /not one of/);
+  // The generated surfaces read it from the public feed.
+  assert.equal(apps.find((a) => a.slug === 'moon-club').listing.dock.name, 'Metaphases Kids');
 });
 
 test('install: a live gated app links its gate, never the store; a beta links TestFlight; review says so', () => {
