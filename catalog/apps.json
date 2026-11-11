@@ -673,6 +673,48 @@
         "llms",
         "resume"
       ]
+    },
+    {
+      "slug": "agent-fleet",
+      "name": "agent-fleet",
+      "aka": [
+        "agent-fleet + fleet-control",
+        "fleet-control"
+      ],
+      "kind": "library",
+      "status": "live",
+      "audience": "general",
+      "url": "https://github.com/mutaaf/agent-fleet",
+      "repo": "agent-fleet",
+      "tagline": "One shared engine for the autonomous coding agents across many repos.",
+      "color": "#1B2433",
+      "added": "2026-05-26",
+      "keywords": [
+        "agent fleet fleet-control autonomous coding agents claude code ci auto-merge reviewer kill date engine"
+      ],
+      "ids": {},
+      "surfaces": [
+        "resume"
+      ]
+    },
+    {
+      "slug": "estate-agent",
+      "name": "estate-agent",
+      "kind": "library",
+      "status": "live",
+      "audience": "general",
+      "url": "https://github.com/mutaaf/estate-agent",
+      "repo": "estate-agent",
+      "tagline": "A standard for AI agents working across many repos: context files, a service map, guardrails.",
+      "color": "#2B2F24",
+      "added": "2026-08-14",
+      "keywords": [
+        "estate agent ai agents many repos context file service map guardrails open source mit"
+      ],
+      "ids": {},
+      "surfaces": [
+        "resume"
+      ]
     }
   ]
 }
