@@ -8,3 +8,4 @@
 | The audit token in the GitHub secret would have carried a newline into the Authorization header | `gh secret set < file` keeps the file's trailing newline | The secret is set with `tr -d '\n'` |
 | The launcher could no longer find 17-0 by typing "18-0" | The renamed app's old name wasn't a keyword | The launcher feed adds every `aka` name to the search words (tested) |
 | Fourteen app lists drifted in four weeks | Each was typed by hand, and nothing compared them | This service: one catalog, everything else generated from it or audited against it |
+| `npm test` and `wrangler` exited 194 with no output on the Mac | A `node_modules` symlink (made for a scratch worktree) got committed with `git add -A`; `node_modules/` in .gitignore matches folders only, so the link went in and looped | Ignore `node_modules` without the slash; in worktrees, `git add` named paths, never `-A` |
