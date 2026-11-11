@@ -135,3 +135,13 @@ test('the page renders the house report and every public app, escaped', () => {
   assert.ok(html.includes('Chalk Talk') && html.includes('of <b>1</b> places'));
   assert.ok(!html.includes('<script>'));
 });
+
+test('a sentence that says an app is not on the App Store is not an overclaim', async () => {
+  const { claimsStore } = await import('../src/drift.mjs');
+  assert.equal(claimsStore('Builds exist for TestFlight testing; KIN is not on the App Store. It is made by me.'), false);
+  assert.equal(claimsStore('It isn’t on the App Store yet.'), false);
+  assert.equal(claimsStore('Now on the App Store.'), true);
+  assert.equal(claimsStore('Not a toy. Now on the App Store.'), true);
+  assert.equal(claimsStore('KIN is not on the App Store, but Hinge Pop is on the App Store.'), true);
+});
+

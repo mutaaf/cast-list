@@ -43,7 +43,7 @@ export function drift(apps, surface, entries) {
     if (a.install) {
       const t = `${e.text ?? ''} ${e.status ?? ''}`;
       if (a.install.live && /\b(public beta|in beta|beta)\b/i.test(t) && !/beta[^.]*\b(also|too)\b/i.test(t)) f(a.slug, 'stale-status', `still says beta: "${clip(t, /beta/i)}"`, 'high', a.install.label);
-      if (!a.install.live && /on the app store/i.test(t)) f(a.slug, 'overclaim', `says it's on the App Store: "${clip(t, /on the app store/i)}"`, 'high', a.install.label);
+      if (!a.install.live && claimsStore(t)) f(a.slug, 'overclaim', `says it's on the App Store: "${clip(t, /on the app store/i)}"`, 'high', a.install.label);
       if (e.status && e.status !== a.install.label) f(a.slug, 'status-label', `labels it "${e.status}"`, 'medium', a.install.label);
     }
     if (a.store?.gate && e.text && /apps\.apple\.com|testflight\.apple\.com/i.test(e.text)) f(a.slug, 'gate', 'links a store directly instead of through the grown-up gate', 'high', a.store.gate);
@@ -51,6 +51,12 @@ export function drift(apps, surface, entries) {
   const inProse = (a) => raw && ([a.name, ...(a.aka ?? [])].some((n) => raw.includes(n.toLowerCase())) || raw.includes(a.url.replace(/\/$/, '').toLowerCase()));
   for (const a of apps) if ((a.surfaces ?? []).includes(surface) && !seen.has(a.slug) && !inProse(a) && a.status !== 'retired') f(a.slug, 'missing', `doesn't list ${a.name}`, a.status === 'paused' ? 'low' : 'high');
   return out;
+}
+
+/** "on the App Store", unless the sentence says it isn't ("KIN is not on the App Store", "never on the App Store"). */
+export function claimsStore(t) {
+  for (const m of t.matchAll(/on the app store/gi)) if (!/\b(not|isn[’']t|never|no longer|not yet)\b[^.!?]{0,24}$/i.test(t.slice(Math.max(0, m.index - 40), m.index))) return true;
+  return false;
 }
 
 function clip(t, re) { const i = t.search(re); return t.slice(Math.max(0, i - 40), i + 40).trim(); }
