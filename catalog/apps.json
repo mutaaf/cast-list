@@ -438,6 +438,53 @@
       }
     },
     {
+      "slug": "chalk-talk-trace",
+      "name": "Chalk Talk Trace",
+      "aka": [
+        "Chalk Talk beta",
+        "Chalk Talk AR",
+        "Trace"
+      ],
+      "kind": "app",
+      "status": "beta",
+      "audience": "general",
+      "url": "https://mutaafaziz.com/chalktalk/beta/",
+      "urls": [
+        "https://mutaafaziz.com/chalktalk/xr/"
+      ],
+      "worker": "chalk-talk",
+      "repo": "chalk-talk",
+      "tagline": "Walk your play in light on a headset, glasses, earbuds or your phone. One link, one tap.",
+      "color": "#04070C",
+      "added": "2026-11-19",
+      "platforms": [
+        "web",
+        "visionos"
+      ],
+      "keywords": [
+        "chalk talk trace beta ar vr xr headset quest vision pro spectacles android xr ray-ban display glasses xreal earbuds walk the play first person court field basketball flag football soccer pickleball"
+      ],
+      "ids": {
+        "launcher": "ctt",
+        "dock": "ctt",
+        "labs": "chalk-talk-trace"
+      },
+      "surfaces": [
+        "launcher",
+        "dock",
+        "llms",
+        "labs"
+      ],
+      "notOn": {
+        "playbill": "It is a page of Chalk Talk (/chalktalk/beta/), which Playbill already fronts under chalktalk."
+      },
+      "listing": {
+        "llms": {
+          "text": "the Chalk Talk public beta for AR, VR and glasses: pick your headset (Quest, Pico, Android XR, Vision Pro, Snap Spectacles, Ray-Ban Display, XREAL, earbuds or a phone) and walk your position in a basketball, flag football, soccer or pickleball play, drawn in light at real size. One link, one tap: mutaafaziz.com/chalktalk/xr. https://mutaafaziz.com/chalktalk/beta/"
+        }
+      }
+    },
+    {
       "slug": "kin",
       "name": "KIN",
       "kind": "game",
